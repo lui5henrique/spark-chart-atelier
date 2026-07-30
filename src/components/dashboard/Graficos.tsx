@@ -121,7 +121,7 @@ export function GraficoDispersao({
       subtitulo="Cada ponto é um respondente — ciano = doomscroller"
       acao={
         <Select value={metrica as string} onValueChange={(v) => onMetrica(v as keyof Registro)}>
-          <SelectTrigger className="w-[190px] bg-secondary/60" size="sm">
+          <SelectTrigger className="w-[190px] bg-secondary/60">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -194,7 +194,7 @@ export function GraficoCategorias({ dados }: { dados: Registro[] }) {
 
 export function GraficoSessoes({ dados }: { dados: Registro[] }) {
   const linhas = agruparMedia(dados, "sessoesDoom", ["ansiedade", "estresse", "fadiga"])
-    .map((l) => ({ ...l, nome: Number(l.nome) }))
+    .map((l) => ({ ...l, nome: Number(l.nome), total: l.total as number }))
     .sort((a, b) => (a.nome as number) - (b.nome as number))
     .filter((l) => (l.total as number) >= 5);
   return (
