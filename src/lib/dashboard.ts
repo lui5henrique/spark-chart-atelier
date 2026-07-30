@@ -44,13 +44,16 @@ export type Filtros = {
   idade: [number, number];
 };
 
+export const idadeMin = Math.min(...dadosIniciais.map((d) => d.idade));
+export const idadeMax = Math.max(...dadosIniciais.map((d) => d.idade));
+
 export const filtrosIniciais: Filtros = {
   pais: "Todos",
   genero: "Todos",
   dispositivo: "Todos",
   doomscroller: "Todos",
   rotina: "Todas",
-  idade: [17, 54],
+  idade: [idadeMin, idadeMax],
 };
 
 export function opcoes(dados: Registro[], campo: keyof Registro): string[] {

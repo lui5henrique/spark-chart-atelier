@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/select";
 import { RotateCcw } from "lucide-react";
 import type { Filtros, Registro } from "@/lib/dashboard";
-import { opcoes } from "@/lib/dashboard";
+import { idadeMax, idadeMin, opcoes } from "@/lib/dashboard";
 
 type Props = {
   dados: Registro[];
@@ -98,8 +98,8 @@ export function FiltroBar({ dados, filtros, onChange, onReset }: Props) {
           </Label>
           <Slider
             value={filtros.idade}
-            min={17}
-            max={54}
+            min={idadeMin}
+            max={idadeMax}
             step={1}
             onValueChange={(v) => onChange({ ...filtros, idade: [v[0], v[1]] })}
             className="pt-2"
